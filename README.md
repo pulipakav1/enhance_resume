@@ -37,7 +37,7 @@ A web-based resume builder and AI-powered resume analysis tool using OpenAI API.
    - Analyze certificates relevance
    - Create cold emails/messages
    - Analyze resume against job descriptions
-   - Get enhancement suggestions
+   
 
 ## Files
 
