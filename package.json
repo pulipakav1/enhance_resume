@@ -1,0 +1,7 @@
+{
+  "type":"module",
+  "dependencies": {
+    "html2pdf": "^0.0.11",
+    "html2pdf.js": "^0.10.1"
+  }
+}

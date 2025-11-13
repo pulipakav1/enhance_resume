@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Professional Resume Builder</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div class="header-content">
+			<h1>📄 Professional Resume Builder</h1>
+			<div class="header-actions">
+				<button id="save-btn" class="btn-secondary" onclick="saveResume()" title="Save to browser storage">💾 Save</button>
+				<button id="load-btn" class="btn-secondary" onclick="loadResume()" title="Load from browser storage">📂 Load</button>
+				<button id="clear-btn" class="btn-secondary" onclick="clearResume()" title="Clear all fields">🗑️ Clear</button>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			<div class="form-section">
+				<h2>Personal Information</h2>
+				<form id="resume-form">
+					<div class="form-group">
+						<label for="full-name">Full Name *</label>
+						<input type="text" id="full-name" name="full-name" class="box" placeholder="John Doe" required>
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group">
+							<label for="email">Email *</label>
+							<input type="email" id="email" name="email" class="box" placeholder="john.doe@email.com" required>
+						</div>
+						
+						<div class="form-group">
+							<label for="phone-number">Phone Number *</label>
+							<input type="tel" id="phone-number" name="phone-number" class="box" placeholder="+1 (555) 123-4567" required>
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group">
+							<label for="address">Address</label>
+							<input type="text" id="address" name="address" class="box" placeholder="City, State, Country">
+						</div>
+						
+						<div class="form-group">
+							<label for="linkedin">LinkedIn Profile</label>
+							<input type="url" id="linkedin" name="linkedin" class="box" placeholder="linkedin.com/in/johndoe">
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group">
+							<label for="github">GitHub Profile</label>
+							<input type="url" id="github" name="github" class="box" placeholder="github.com/johndoe">
+						</div>
+						
+						<div class="form-group">
+							<label for="website">Personal Website</label>
+							<input type="url" id="website" name="website" class="box" placeholder="johndoe.com">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="summary">Professional Summary</label>
+						<textarea id="summary" name="summary" rows="4" class="box" placeholder="Brief professional summary highlighting your key strengths and career objectives..."></textarea>
+					</div>
+					
+					<h2>Work Experience</h2>
+					<div id="work-experience-container">
+						<div class="experience-item">
+							<div class="form-row">
+								<div class="form-group">
+									<label>Job Title *</label>
+									<input type="text" name="job-title" class="box" placeholder="Software Engineer" required>
+								</div>
+								<div class="form-group">
+									<label>Company *</label>
+									<input type="text" name="company" class="box" placeholder="Tech Company Inc." required>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group">
+									<label>Start Date</label>
+									<input type="month" name="start-date" class="box">
+								</div>
+								<div class="form-group">
+									<label>End Date</label>
+									<input type="month" name="end-date" class="box">
+									<label class="checkbox-label">
+										<input type="checkbox" name="current-job" class="current-job-checkbox"> Current Position
+									</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Description *</label>
+								<textarea name="job-description" rows="3" class="box" placeholder="Describe your responsibilities and achievements..." required></textarea>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn-add" onclick="addWorkExperience()">+ Add Another Experience</button>
+					
+					<h2>Education</h2>
+					<div id="education-container">
+						<div class="education-item">
+							<div class="form-row">
+								<div class="form-group">
+									<label>Degree/Certification *</label>
+									<input type="text" name="degree" class="box" placeholder="Bachelor of Science in Computer Science" required>
+								</div>
+								<div class="form-group">
+									<label>Institution *</label>
+									<input type="text" name="institution" class="box" placeholder="University Name" required>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group">
+									<label>Graduation Date</label>
+									<input type="month" name="grad-date" class="box">
+								</div>
+								<div class="form-group">
+									<label>GPA (Optional)</label>
+									<input type="text" name="gpa" class="box" placeholder="3.8/4.0">
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn-add" onclick="addEducation()">+ Add Another Education</button>
+					
+					<h2>Skills</h2>
+					<div class="form-group">
+						<label for="skills">Skills (comma-separated or one per line) *</label>
+						<textarea id="skills" name="skills" rows="5" class="box" placeholder="Python, JavaScript, React, Node.js, SQL, Git..." required></textarea>
+					</div>
+					
+					<h2>Projects</h2>
+					<div id="projects-container">
+						<div class="project-item">
+							<div class="form-row">
+								<div class="form-group">
+									<label>Project Name</label>
+									<input type="text" name="project-name" class="box" placeholder="E-Commerce Platform">
+								</div>
+								<div class="form-group">
+									<label>Project Link</label>
+									<input type="url" name="project-link" class="box" placeholder="https://project-demo.com">
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Description</label>
+								<textarea name="project-description" rows="2" class="box" placeholder="Brief description of the project..."></textarea>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn-add" onclick="addProject()">+ Add Another Project</button>
+					
+					<h2>Certifications</h2>
+					<div id="certifications-container">
+						<div class="cert-item">
+							<div class="form-row">
+								<div class="form-group">
+									<label>Certification Name</label>
+									<input type="text" name="cert-name" class="box" placeholder="AWS Certified Solutions Architect">
+								</div>
+								<div class="form-group">
+									<label>Issuing Organization</label>
+									<input type="text" name="cert-org" class="box" placeholder="Amazon Web Services">
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Date</label>
+								<input type="month" name="cert-date" class="box">
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn-add" onclick="addCertification()">+ Add Another Certification</button>
+					
+					<div class="form-actions">
+						<input type="submit" value="✨ Create Resume" class="btn-primary">
+					</div>
+				</form>
+
+				<div class="action-buttons" id="action-buttons" style="display: none;">
+					<button id="download-btn" onclick="downloadPDF()" class="btn-download">📥 Download as PDF</button>
+					<button onclick="printResume()" class="btn-print">🖨️ Print Resume</button>
+				</div>
+			</div>
+			
+			<div class="preview-section">
+				<h2>Resume Preview</h2>
+				<div id="preview" class="resume-preview-container">
+					<div class="preview-placeholder">
+						<p>👆 Fill out the form and click "Create Resume" to see your preview here</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="script.js"></script>
+</body>
+</html>
